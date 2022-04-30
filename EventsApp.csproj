@@ -5,11 +5,16 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>img\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="banner-g926c2e526_1280.png" />
     <None Remove="calendar-g20996207d_1280.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="img\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

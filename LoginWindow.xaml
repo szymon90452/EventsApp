@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EventsApp"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Logowanie" Height="450" Width="800"
+        Title="EventsApp" Height="450" Width="800"
         >
     <Grid>
         <Grid>
@@ -21,7 +21,7 @@
             <TextBox x:Name="loginBox" HorizontalAlignment="Left" Margin="75,139,0,0"  VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="Blue" BorderThickness="2,2,2,2"/>
             <Label Content="Nazwa użytkownika" HorizontalAlignment="Left" Margin="75,110,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" />
             <Label Content="Hasło&#xD;&#xA;" HorizontalAlignment="Left" Margin="75,196,0,0" VerticalAlignment="Top" FontSize="16" Height="30" FontFamily="Bahnschrift SemiBold" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
-            <Image x:Name="Event_Image" HorizontalAlignment="Left" Height="192" Margin="402,20,0,0" VerticalAlignment="Top" Width="396" Source="/banner-g926c2e526_1280.png" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="Event_Image" HorizontalAlignment="Left" Height="192" Margin="402,20,0,0" VerticalAlignment="Top" Width="396" Source="img/banner-g926c2e526_1280.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -31,7 +31,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Calendar" HorizontalAlignment="Left" Height="174" Margin="514,195,0,0" VerticalAlignment="Top" Width="172" Source="/calendar-g20996207d_1280.png" Grid.RowSpan="2"/>
+            <Image x:Name="Calendar" HorizontalAlignment="Left" Height="174" Margin="514,195,0,0" VerticalAlignment="Top" Width="172" Source="img/calendar-g20996207d_1280.png" Grid.RowSpan="2"/>
             <CheckBox x:Name="passwordCheckbox" Content="Pokaż hasło" HorizontalAlignment="Left" Margin="75,290,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" Height="18" Width="247" Checked="CheckBox_Checked" Unchecked="Checkbox_Unchecked"/>
             <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="75,226,0,0" VerticalAlignment="Top" Width="250" Height="30" BorderBrush="Blue" FontSize="20" BorderThickness="2,2,2,2"/>
             <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="75,226,0,0"  VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="Blue" BorderThickness="2,2,2,2" Visibility="Hidden"/>
