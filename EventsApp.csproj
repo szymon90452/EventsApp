@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="banner-g926c2e526_1280.png" />
-    <Resource Include="calendar-g20996207d_1280.png" />
+    <Resource Include="img\banner-g926c2e526_1280.png" />
+    <Resource Include="img\calendar-g20996207d_1280.png" />
   </ItemGroup>
 
 </Project>
