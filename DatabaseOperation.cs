@@ -36,24 +36,14 @@ namespace EventsApp
             }
         }
 
-        public static bool userRegister(string login, string password)
+        public static bool userRegister(string name, string surname,string login, string password, string email)
         {
-            String query = $"INSERT;";
+            String query = $"INSERT INTO users (name,surname,login,password,email,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}',CURDATE());";
             try
             {
                 MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    reader.Close();
-                    return true;
-                }
-                else
-                {
-                    reader.Close();
-                    return false;
-                }
+                cmd.ExecuteNonQuery();
+                return true;
             }
             catch (Exception ex)
             {
