@@ -48,7 +48,6 @@ namespace EventsApp
                 {
                     MessageBox.Show("Coś poszło nie tak.");
                 }
-
             }
             else
             {
@@ -95,9 +94,7 @@ namespace EventsApp
 
         private void emailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]
-                (?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]
-                {0,61}[a-zA-Z0-9])?)*$")).IsMatch(emailTextBox.Text))
+            if ((new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")).IsMatch(emailTextBox.Text))
             {
                 emailTextBox.Foreground = Brushes.Black;
             }
