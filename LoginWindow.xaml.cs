@@ -20,6 +20,9 @@ namespace EventsApp
     /// </summary>
     public partial class LoginWindow : Window
     {
+
+        bool passwordIsVisible = false;
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -29,16 +32,43 @@ namespace EventsApp
         {
             String login,password;
             login = loginBox.Text;
-            password = passwordBox.Password.ToString();
+
+            if (passwordIsVisible)
+            {
+                password = passwordTextBox.Text;
+            }
+            else
+            {
+                password = passwordBox.Password.ToString();
+            }
+
             if (DatabaseOperation.userLogin(login, password))
             {
                 MessageBox.Show("Zalogowany");
-                //Zmień okno na panel
+                //Switch window for panel
             }
             else 
             {
                 MessageBox.Show("Nieprawidłowe dane logowania");
             }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            //Switch from passwordBox to TextBox
+            passwordTextBox.Text = passwordBox.Password.ToString();
+            passwordBox.Visibility = Visibility.Hidden;
+            passwordTextBox.Visibility = Visibility.Visible;
+            passwordIsVisible = true;
+        }
+
+        private void Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //Switch from textBox to passwordBox
+            passwordBox.Password = passwordTextBox.Text;
+            passwordBox.Visibility = Visibility.Visible;
+            passwordTextBox.Visibility = Visibility.Hidden;
+            passwordIsVisible= false;
         }
     }
 }

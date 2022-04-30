@@ -32,8 +32,9 @@
                 </Image.RenderTransform>
             </Image>
             <Image x:Name="Calendar" HorizontalAlignment="Left" Height="174" Margin="514,195,0,0" VerticalAlignment="Top" Width="172" Source="/calendar-g20996207d_1280.png" Grid.RowSpan="2"/>
-            <CheckBox Content="Pokaż hasło" HorizontalAlignment="Left" Margin="75,290,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" Height="18" Width="247"/>
+            <CheckBox x:Name="passwordCheckbox" Content="Pokaż hasło" HorizontalAlignment="Left" Margin="75,290,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" Height="18" Width="247" Checked="CheckBox_Checked" Unchecked="Checkbox_Unchecked"/>
             <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="75,226,0,0" VerticalAlignment="Top" Width="250" Height="30" BorderBrush="Blue" FontSize="20" BorderThickness="2,2,2,2"/>
+            <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="75,226,0,0"  VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="Blue" BorderThickness="2,2,2,2" Visibility="Hidden"/>
         </Grid>
 
     </Grid>
