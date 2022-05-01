@@ -36,6 +36,7 @@
             <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="75,226,0,0" VerticalAlignment="Top" Width="250" Height="30" BorderBrush="Blue" FontSize="20" BorderThickness="2,2,2,2"/>
             <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="75,226,0,0"  VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="Blue" BorderThickness="2,2,2,2" Visibility="Hidden"/>
         </Grid>
+        <Button x:Name="returnButton" Content="f" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Wingdings 3" Height="37" Width="42" Click="returnButton_Click" BorderBrush="{x:Null}" FontSize="24" FontWeight="Bold"/>
 
     </Grid>
 </Window>

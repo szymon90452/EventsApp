@@ -41,6 +41,7 @@
             <Label Content="Adres email" HorizontalAlignment="Left" Margin="75,494,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" />
             <Label Content="Dołącz do nas!&#xA;" HorizontalAlignment="Left" Margin="437,172,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="48" FontFamily="Bahnschrift SemiBold" Height="67" Width="326" Foreground="White"/>
             <Label Content="To już czas!&#xA;" HorizontalAlignment="Left" Margin="437,100,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="48" FontFamily="Bahnschrift SemiBold" Height="67" Width="326" Foreground="White"/>
+            <Button x:Name="returnButton" Content="f" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Wingdings 3" Height="37" Width="42" Click="returnButton_Click" BorderBrush="{x:Null}" FontSize="24" FontWeight="Bold"/>
         </Grid>
 
     </Grid>

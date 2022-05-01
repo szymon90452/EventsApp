@@ -74,5 +74,12 @@ namespace EventsApp
             passwordTextBox.Visibility = Visibility.Hidden;
             passwordIsVisible= false;
         }
+
+        private void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow startWindow = new StartWindow();
+            startWindow.Show();
+            this.Close();
+        }
     }
 }
