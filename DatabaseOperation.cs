@@ -29,9 +29,9 @@ namespace EventsApp
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
                 return false;
             }
         }
@@ -45,9 +45,9 @@ namespace EventsApp
                 cmd.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
                 return false;
             }
         }

@@ -21,8 +21,8 @@ namespace EventsApp
                 connection.Open();
                 return true;
             }
-            catch (Exception ex) { 
-                MessageBox.Show(ex.ToString());
+            catch (Exception) { 
+                MessageBox.Show("Błąd serwera");
                 return false;
             }
             
@@ -35,9 +35,9 @@ namespace EventsApp
                 connection.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Błąd serwera");
                 return false;
             }
         }
