@@ -12,23 +12,34 @@ namespace EventsApp
     public static class DatabaseConnector
     {
         public static MySqlConnection connection;
-        public static void startConnection()
+        public static bool startConnection()
         {
             try
             {
                 string connectionString = "SERVER=localhost;DATABASE=eventsdatabase;UID=root;PASSWORD=;";
                 connection = new MySqlConnection(connectionString);
                 connection.Open();
+                return true;
             }
             catch (Exception ex) { 
                 MessageBox.Show(ex.ToString());
+                return false;
             }
             
         }
 
-        public static void closeConnection()
-        { 
-            connection.Close();
+        public static bool closeConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
         }
     }
 }

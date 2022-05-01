@@ -38,7 +38,7 @@ namespace EventsApp
 
         public static bool userRegister(string name, string surname,string login, string password, string email)
         {
-            String query = $"INSERT INTO users (name,surname,login,password,email,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}',CURDATE());";
+            String query = $"INSERT INTO users (name,surname,login,password,email,privileges,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}','user',CURDATE());";
             try
             {
                 MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);

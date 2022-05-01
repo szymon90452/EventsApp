@@ -42,14 +42,18 @@ namespace EventsApp
                 password = passwordBox.Password.ToString();
             }
 
-            if (DatabaseOperation.userLogin(login, password))
+            if (DatabaseConnector.startConnection()) 
             {
-                MessageBox.Show("Zalogowany");
-                //Switch window for panel
-            }
-            else 
-            {
-                MessageBox.Show("Nieprawidłowe dane logowania");
+                if (DatabaseOperation.userLogin(login, password))
+                {
+                    MessageBox.Show("Zalogowany");
+                    //Switch window for panel
+                    DatabaseConnector.closeConnection();
+                }
+                else
+                {
+                    MessageBox.Show("Nieprawidłowe dane logowania");
+                }
             }
         }
 

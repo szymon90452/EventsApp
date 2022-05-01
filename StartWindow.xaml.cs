@@ -23,7 +23,6 @@ namespace EventsApp
         public StartWindow()
         {
             InitializeComponent();
-            DatabaseConnector.startConnection();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
