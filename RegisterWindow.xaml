@@ -13,13 +13,13 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Rectangle HorizontalAlignment="Left" Height="686" Fill="White" Stroke="White" VerticalAlignment="Center" Width="400" StrokeMiterLimit="0"/>
-            <Rectangle HorizontalAlignment="Left" Height="742" Fill="#FF10C893" Stroke="White" VerticalAlignment="Center" Width="400" Margin="400,0,0,0"/>
+            <Rectangle HorizontalAlignment="Left" Height="718" Fill="#FF10C893" Stroke="White" VerticalAlignment="Center" Width="400" Margin="400,0,0,0"/>
             <Label Content="Rejestracja&#xD;&#xA;" HorizontalAlignment="Left" Margin="104,27,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="36" FontFamily="Bahnschrift SemiBold" Height="54"/>
             <Button Content="Zarejestruj się" HorizontalAlignment="Left" Margin="75,598,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#FF10C893" FontSize="20" FontFamily="Bahnschrift SemiBold" Foreground="AliceBlue" BorderThickness="1,1,1,1" Click="Button_Click"/>
             <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="75,269,0,0" VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="#FF10C893" BorderThickness="2,2,2,2" SelectionBrush="#FF66F1C9" TextChanged="loginTextBox_TextChanged"/>
             <Label Content="Nazwa użytkownika" HorizontalAlignment="Left" Margin="75,240,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" />
             <Label Content="Hasło&#xD;&#xA;" HorizontalAlignment="Left" Margin="75,323,0,0" VerticalAlignment="Top" FontSize="16" Height="30" FontFamily="Bahnschrift SemiBold" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
-            <Image x:Name="Event_Image" HorizontalAlignment="Left" Height="192" Margin="402,135,0,0" VerticalAlignment="Top" Width="396" Source="img/banner-g926c2e526_1280.png" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="Event_Image" HorizontalAlignment="Left" Height="192" Margin="402,213,0,0" VerticalAlignment="Top" Width="396" Source="img/banner-g926c2e526_1280.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -29,7 +29,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Calendar" HorizontalAlignment="Left" Height="174" Margin="514,310,0,0" VerticalAlignment="Top" Width="172" Source="img/calendar-g20996207d_1280.png"/>
+            <Image x:Name="Calendar" HorizontalAlignment="Left" Height="174" Margin="514,388,0,0" VerticalAlignment="Top" Width="172" Source="img/calendar-g20996207d_1280.png"/>
             <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="75,353,0,0" VerticalAlignment="Top" Width="250" Height="30" BorderBrush="#FF10C893" FontSize="20" BorderThickness="2,2,2,2" SelectionBrush="#FF66F1C9" PasswordChanged="passwordTextBox_PasswordChanged"/>
             <Label Content="Powtórz hasło&#xA;" HorizontalAlignment="Left" Margin="75,407,0,0" VerticalAlignment="Top" FontSize="16" Height="30" FontFamily="Bahnschrift SemiBold" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
             <PasswordBox x:Name="repeatPasswordTextBox" HorizontalAlignment="Left" Margin="75,437,0,0" VerticalAlignment="Top" Width="250" Height="30" BorderBrush="#FF10C893" FontSize="20" BorderThickness="2,2,2,2" SelectionBrush="#FF66F1C9" PasswordChanged="repeatPasswordTextBox_PasswordChanged"/>
@@ -39,6 +39,8 @@
             <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="75,161,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" />
             <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Margin="75,523,0,0"  VerticalAlignment="Top" Width="250" Height="30" FontSize="20" FontWeight="Normal" BorderBrush="#FF10C893" BorderThickness="2,2,2,2" SelectionBrush="#FF66F1C9" TextChanged="emailTextBox_TextChanged"/>
             <Label Content="Adres email" HorizontalAlignment="Left" Margin="75,494,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift SemiBold" />
+            <Label Content="Dołącz do nas!&#xA;" HorizontalAlignment="Left" Margin="437,172,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="48" FontFamily="Bahnschrift SemiBold" Height="67" Width="326" Foreground="White"/>
+            <Label Content="To już czas!&#xA;" HorizontalAlignment="Left" Margin="437,100,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="48" FontFamily="Bahnschrift SemiBold" Height="67" Width="326" Foreground="White"/>
         </Grid>
 
     </Grid>

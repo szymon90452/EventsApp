@@ -20,6 +20,14 @@ namespace EventsApp
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        //Regex match flag for validation
+        bool correctName = false;
+        bool correctSurname = false;
+        bool correctLogin = false;
+        bool correctPassword = false;
+        bool correctEmail = false;
+
+
         public RegisterWindow()
         {
             InitializeComponent();
@@ -35,23 +43,22 @@ namespace EventsApp
             repeatPassword = repeatPasswordTextBox.Password.ToString();
             email = emailTextBox.Text;
 
-            if (password == repeatPassword)
+            if (textBoxNotEmpty())
             {
-                if (DatabaseOperation.userRegister(name, surname, login, password, email))
+                if (regexCheck())
                 {
-                    MessageBox.Show("Pomyślnie zarejestrowano.");
-                    LoginWindow loginWindow = new LoginWindow();
-                    loginWindow.Show();
-                    this.Close();
+                    if (DatabaseOperation.userRegister(name, surname, login, password, email))
+                    {
+                        MessageBox.Show("Pomyślnie zarejestrowano.");
+                        LoginWindow loginWindow = new LoginWindow();
+                        loginWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Coś poszło nie tak.");
+                    }
                 }
-                else 
-                {
-                    MessageBox.Show("Coś poszło nie tak.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Hasła muszą być takie same.");
             }
 
         }
@@ -61,10 +68,12 @@ namespace EventsApp
             if( (new Regex(@"^[A-Za-z]+$")).IsMatch(nameTextBox.Text))
             {
                 nameTextBox.Foreground = Brushes.Black;
+                correctName = true;
             }
             else
             {
                 nameTextBox.Foreground = Brushes.Red;
+                correctName = false;
             }
         }
 
@@ -73,10 +82,12 @@ namespace EventsApp
             if ((new Regex(@"^[A-Za-z]+$")).IsMatch(surnameTextBox.Text))
             {
                 surnameTextBox.Foreground = Brushes.Black;
+                correctSurname = true;
             }
             else
             {
                 surnameTextBox.Foreground = Brushes.Red;
+                correctSurname = false;
             }
         }
 
@@ -85,10 +96,12 @@ namespace EventsApp
             if ((new Regex(@"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$")).IsMatch(loginTextBox.Text))
             {
                 loginTextBox.Foreground = Brushes.Black;
+                correctLogin = true;
             }
             else
             {
                 loginTextBox.Foreground = Brushes.Red;
+                correctLogin = false;
             }
         }
 
@@ -97,10 +110,12 @@ namespace EventsApp
             if ((new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")).IsMatch(emailTextBox.Text))
             {
                 emailTextBox.Foreground = Brushes.Black;
+                correctEmail = true;
             }
             else
             {
                 emailTextBox.Foreground = Brushes.Red;
+                correctEmail = false;
             }
         }
 
@@ -111,11 +126,13 @@ namespace EventsApp
             {
                 passwordTextBox.Foreground = Brushes.Black;
                 repeatPasswordTextBox.Foreground = Brushes.Black;
+                correctPassword = true;
             }
             else
             {
                 passwordTextBox.Foreground = Brushes.Red;
                 repeatPasswordTextBox.Foreground = Brushes.Red;
+                correctPassword = false;
             }
         }
 
@@ -126,12 +143,100 @@ namespace EventsApp
             {
                 passwordTextBox.Foreground = Brushes.Black;
                 repeatPasswordTextBox.Foreground = Brushes.Black;
+                correctPassword = true;
             }
             else
             {
                 passwordTextBox.Foreground = Brushes.Red;
                 repeatPasswordTextBox.Foreground = Brushes.Red;
+                correctPassword = false;
             }
+        }
+
+        bool regexCheck() 
+        {
+            String msg = "";
+            bool isCorrect = true;
+            if (!correctName)
+            {
+                isCorrect = false;
+                msg += "Pole imienia może zawierać tylko litery \n";
+            }
+            if (!correctSurname)
+            {
+                isCorrect = false;
+                msg += "Pole nazwiska może zawierać tylko litery \n";
+            }
+            if (!correctLogin)
+            {
+                isCorrect = false;
+                msg += "Pole nazwy użytkownika może zawierać tylko litery i liczby. \n";
+            }
+            if (!correctPassword)
+            {
+                isCorrect = false;
+                msg += "Pole hasła musi zawierać przynajmniej jedną literę i jedną cyfrę. \n";
+                msg += "Pole hasła musi zawierać conajmniej 8 znaków. \n";
+                if (passwordTextBox.Password.ToString() != repeatPasswordTextBox.Password.ToString())
+                {
+                    msg += "Hasła nie są takie same. \n";
+                }
+            }
+            if (!correctEmail)
+            {
+                isCorrect = false;
+                msg += "Podany email jest niepoprawny. \n";
+            }
+            if (isCorrect)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(msg);
+                return false;
+            }
+        }
+
+        bool textBoxNotEmpty()
+        {
+            String msg = "";
+            bool isNotEmpty = true;
+            if (nameTextBox.Text == "")
+            {
+                msg += "Pole imienia jest puste. \n";
+                isNotEmpty = false;
+            }
+            if (surnameTextBox.Text == "")
+            {
+                msg += "Pole nazwiska jest puste. \n";
+                isNotEmpty = false;
+            }
+            if (loginTextBox.Text == "")
+            {
+                msg += "Pole nazwy użytkownika jest puste. \n";
+                isNotEmpty = false;
+            }
+            if ((passwordTextBox.Password.ToString() == "") || (repeatPasswordTextBox.Password.ToString() == ""))
+            {
+                msg += "Pola haseł są puste. \n";
+                isNotEmpty = false;
+            }
+            if (emailTextBox.Text == "")
+            {
+                msg += "Pole email jest puste. \n";
+                isNotEmpty = false;
+            }
+            if (!isNotEmpty)
+            {
+                MessageBox.Show(msg);
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
+
         }
     }
 }
