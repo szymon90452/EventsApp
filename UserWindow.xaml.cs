@@ -24,18 +24,18 @@ namespace EventsApp
         {
             InitializeComponent();
             this.user = user;
-            initializeCombos();
-            initializeUserInfo();
+            InitializeCombos();
+            InitializeUserInfo();
         }
 
-        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow startWindow = new StartWindow();
+            StartWindow startWindow = new();
             startWindow.Show();
             this.Close();
         }
 
-        void initializeCombos() 
+        void InitializeCombos() 
         {
             comboAttendType.Items.Add("Słuchacz");
             comboAttendType.Items.Add("Autor");
@@ -48,10 +48,10 @@ namespace EventsApp
             comboFoodType.SelectedIndex = 0;
         }
 
-        void initializeUserInfo()
+        void InitializeUserInfo()
         {
-            nameLabel.Content = user.getName() + " " + user.getSurname();
-            nickLabel.Content = user.getLogin();
+            nameLabel.Content = user.GetName() + " " + user.GetSurname();
+            nickLabel.Content = user.GetLogin();
         }
     }
 }

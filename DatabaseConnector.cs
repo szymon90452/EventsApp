@@ -12,7 +12,7 @@ namespace EventsApp
     public static class DatabaseConnector
     {
         public static MySqlConnection connection;
-        public static bool startConnection()
+        public static bool StartConnection()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace EventsApp
             
         }
 
-        public static bool closeConnection()
+        public static bool CloseConnection()
         {
             try
             {

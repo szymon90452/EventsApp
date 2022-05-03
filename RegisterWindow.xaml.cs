@@ -47,12 +47,12 @@ namespace EventsApp
             {
                 if (regexCheck())
                 {
-                    if (DatabaseConnector.startConnection())
+                    if (DatabaseConnector.StartConnection())
                     {
-                        if (DatabaseOperation.userRegister(name, surname, login, password, email))
+                        if (DatabaseOperation.UserRegister(name, surname, login, password, email))
                         {
                             MessageBox.Show("Pomyślnie zarejestrowano.");
-                            DatabaseConnector.closeConnection();
+                            DatabaseConnector.CloseConnection();
                             LoginWindow loginWindow = new LoginWindow();
                             loginWindow.Show();
                             this.Close();

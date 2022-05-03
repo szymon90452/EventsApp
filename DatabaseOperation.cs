@@ -10,12 +10,12 @@ namespace EventsApp
 {
     public static class DatabaseOperation
     {
-        public static bool userLogin(string login, string password) 
+        public static bool UserLogin(string login, string password) 
         {
             String query = $"SELECT * FROM users WHERE login='{login}' AND password='{password}';";
             try
             {
-                MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -36,12 +36,12 @@ namespace EventsApp
             }
         }
 
-        public static bool userRegister(string name, string surname,string login, string password, string email)
+        public static bool UserRegister(string name, string surname,string login, string password, string email)
         {
             String query = $"INSERT INTO users (name,surname,login,password,email,privileges,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}','user',CURDATE());";
             try
             {
-                MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
                 cmd.ExecuteNonQuery();
                 return true;
             }
@@ -52,16 +52,16 @@ namespace EventsApp
             }
         }
 
-        public static User getInfoAboutUser(String login, String password)
+        public static User GetInfoAboutUser(String login, String password)
         {
             String query = $"SELECT * FROM users WHERE login='{login}' AND password='{password}';";
             try
             {
-                MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    User user = new User((String)reader[1], (String)reader[2], (String)reader[3], (String)reader[5], (String)reader[6]);
+                    User user = new((String)reader[1], (String)reader[2], (String)reader[3], (String)reader[5], (String)reader[6]);
                     reader.Close();
                     return user;
                 }

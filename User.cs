@@ -25,30 +25,34 @@ namespace EventsApp
 
         public User(String priviledges)
         {
+            this.name = "";
+            this.surname = "";
+            this.login = "";
+            this.email = "";
             this.priviledges = priviledges;
         }
 
-        public String getName() 
+        public String GetName() 
         {
             return this.name;
         }
 
-        public String getSurname()
+        public String GetSurname()
         {
             return this.surname;
         }
 
-        public String getLogin()
+        public String GetLogin()
         {
             return this.login;
         }
 
-        public String getEmail()
+        public String GetEmail()
         {
             return this.email;
         }
 
-        public String getPriviledges()
+        public String GetPriviledges()
         {
             return this.priviledges;
         }

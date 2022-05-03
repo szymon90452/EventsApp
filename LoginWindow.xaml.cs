@@ -42,17 +42,17 @@ namespace EventsApp
                 password = passwordBox.Password.ToString();
             }
 
-            if (DatabaseConnector.startConnection()) 
+            if (DatabaseConnector.StartConnection()) 
             {
-                if (DatabaseOperation.userLogin(login, password))
+                if (DatabaseOperation.UserLogin(login, password))
                 {
-                    User user = DatabaseOperation.getInfoAboutUser(login, password);
-                    if (user.getPriviledges() != "false") 
+                    User user = DatabaseOperation.GetInfoAboutUser(login, password);
+                    if (user.GetPriviledges() != "false") 
                     {
-                        UserWindow userWindow = new UserWindow(user);
+                        UserWindow userWindow = new(user);
                         userWindow.Show();
                         this.Close();
-                        DatabaseConnector.closeConnection();
+                        DatabaseConnector.CloseConnection();
                     }
                 }
                 else
@@ -80,9 +80,9 @@ namespace EventsApp
             passwordIsVisible= false;
         }
 
-        private void returnButton_Click(object sender, RoutedEventArgs e)
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow startWindow = new StartWindow();
+            StartWindow startWindow = new();
             startWindow.Show();
             this.Close();
         }
