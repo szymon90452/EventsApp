@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="banner-g926c2e526_1280.png" />
+    <None Remove="blank-profile-picture-g1b6ced75b_640.png" />
     <None Remove="calendar-g20996207d_1280.png" />
   </ItemGroup>
 
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="blank-profile-picture-g1b6ced75b_640.png" />
     <Resource Include="img\banner-g926c2e526_1280.png" />
     <Resource Include="img\calendar-g20996207d_1280.png" />
   </ItemGroup>

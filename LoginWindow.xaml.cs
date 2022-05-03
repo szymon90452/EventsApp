@@ -46,9 +46,14 @@ namespace EventsApp
             {
                 if (DatabaseOperation.userLogin(login, password))
                 {
-                    MessageBox.Show("Zalogowany");
-                    //Switch window for panel
-                    DatabaseConnector.closeConnection();
+                    User user = DatabaseOperation.getInfoAboutUser(login, password);
+                    if (user.getPriviledges() != "false") 
+                    {
+                        UserWindow userWindow = new UserWindow(user);
+                        userWindow.Show();
+                        this.Close();
+                        DatabaseConnector.closeConnection();
+                    }
                 }
                 else
                 {

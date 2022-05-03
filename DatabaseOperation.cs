@@ -51,5 +51,30 @@ namespace EventsApp
                 return false;
             }
         }
+
+        public static User getInfoAboutUser(String login, String password)
+        {
+            String query = $"SELECT * FROM users WHERE login='{login}' AND password='{password}';";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, DatabaseConnector.connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    User user = new User((String)reader[1], (String)reader[2], (String)reader[3], (String)reader[5], (String)reader[6]);
+                    reader.Close();
+                    return user;
+                }
+                else 
+                {
+                    return new User("false");
+                }
+
+            }
+            catch (Exception)
+            {
+                return new User("false");
+            }
+        }
     }
 }
