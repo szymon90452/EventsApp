@@ -16,15 +16,16 @@
         <Label x:Name="nickLabel" Content="jdoe34" HorizontalAlignment="Left" Margin="78,38,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <Button x:Name="logoutButton" Content="Wyloguj" HorizontalAlignment="Left" Height="40" Margin="690,17,0,0" VerticalAlignment="Top" Width="83" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Bahnschrift SemiBold" Click="LogoutButton_Click"/>
         <Image x:Name="personImg" HorizontalAlignment="Left" Height="50" Margin="23,12,0,0" VerticalAlignment="Top" Width="50" Source="/blank-profile-picture-g1b6ced75b_640.png"/>
-        <ComboBox HorizontalAlignment="Left" Margin="152,92,0,0" VerticalAlignment="Top" Width="248" Height="24"/>
+        <ComboBox x:Name="comboEventTitle" HorizontalAlignment="Left" Margin="152,92,0,0" VerticalAlignment="Top" Width="248" Height="24" SelectionChanged="comboEventTitle_SelectionChanged"/>
         <Label Content="Nazwa wydarzenia" HorizontalAlignment="Left" Margin="23,92,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <Label Content="Termin wydarzenia" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold"/>
-        <Label Content="24.05.2022 | 16:00" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold" Width="248"/>
+        <Label x:Name="labelDateTime" Content="" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold" Width="118"/>
         <ComboBox x:Name="comboAttendType" HorizontalAlignment="Left" Margin="152,242,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
         <Label Content="Typ uczestnictwa" HorizontalAlignment="Left" Margin="23,242,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <ComboBox x:Name="comboFoodType" HorizontalAlignment="Left" Margin="152,282,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
         <Label Content="Wyżywienie" HorizontalAlignment="Left" Margin="23,282,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <Button Content="Zapisz się" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="Blue" FontSize="20" FontFamily="Bahnschrift SemiBold" Foreground="AliceBlue" BorderThickness="1,1,1,1"/>
         <Label Content="Opis wydarzenia" HorizontalAlignment="Left" Margin="23,135,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Label x:Name="labelDescription" Content="" HorizontalAlignment="Left" Margin="152,135,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="65"/>
     </Grid>
 </Window>
