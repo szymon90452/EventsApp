@@ -21,6 +21,9 @@ namespace EventsApp
     public partial class UserWindow : Window
     {
         public User user;
+        int eventId = 0;
+        String eventTitle;
+
         public UserWindow(User user)
         {
             InitializeComponent();
@@ -80,14 +83,14 @@ namespace EventsApp
             }
         }
 
-        private void comboEventTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboEventTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EventInfoChange();
         }
 
         void EventInfoChange()
         {
-            String eventTitle = (string)comboEventTitle.SelectedItem.ToString();
+            eventTitle = (string)comboEventTitle.SelectedItem.ToString();
             DatabaseConnector.StartConnection();
             String query = $"SELECT * FROM Events WHERE title='{eventTitle}';";
             try
@@ -97,7 +100,8 @@ namespace EventsApp
 
                 if (reader.Read())
                 {
-                    labelDescription.Content = reader[2];
+                    eventId = (int)reader[0];
+                    labelDescription.Text = (string)reader[2];
                     labelDateTime.Content = reader[3] + " | " + reader[4];
                 }
 
@@ -109,5 +113,26 @@ namespace EventsApp
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String attendType = (string)comboAttendType.SelectedItem.ToString();
+            String foodType = (string)comboFoodType.SelectedItem.ToString();
+
+            DatabaseConnector.StartConnection();
+            if (DatabaseOperation.SendEntry(eventId, attendType, foodType, user))
+            {
+                MessageBox.Show("Zgłoszenie na udział w " + eventTitle + " zostało wysłane.");
+                DatabaseConnector.CloseConnection();
+            }
+            else 
+            {
+                MessageBox.Show("Coś poszło nie tak.");
+                DatabaseConnector.CloseConnection();
+            }
+
+            comboAttendType.SelectedIndex = 0;
+            comboEventTitle.SelectedIndex = 0;
+            comboFoodType.SelectedIndex = 0;
+        }
     }
 }

@@ -8,14 +8,16 @@ namespace EventsApp
 {
     public class User
     {
+        readonly int id;
         readonly String name;
         readonly String surname;
         readonly String login;
         readonly String email;
         readonly String priviledges;
 
-        public User(String name, String surname, String login ,String email, String priviledges)
+        public User(int id, String name, String surname, String login ,String email, String priviledges)
         {
+            this.id = id;
             this.name = name;
             this.surname = surname;
             this.login = login;
@@ -25,6 +27,7 @@ namespace EventsApp
 
         public User(String priviledges)
         {
+            this.id = 0;
             this.name = "";
             this.surname = "";
             this.login = "";
@@ -55,6 +58,11 @@ namespace EventsApp
         public String GetPriviledges()
         {
             return this.priviledges;
+        }
+
+        public int GetId()
+        {
+            return this.id;
         }
 
     }

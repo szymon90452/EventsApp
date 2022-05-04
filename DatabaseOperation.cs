@@ -61,7 +61,7 @@ namespace EventsApp
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    User user = new((String)reader[1], (String)reader[2], (String)reader[3], (String)reader[5], (String)reader[6]);
+                    User user = new((int)reader[0],(String)reader[1], (String)reader[2], (String)reader[3], (String)reader[5], (String)reader[6]);
                     reader.Close();
                     return user;
                 }
@@ -74,6 +74,22 @@ namespace EventsApp
             catch (Exception)
             {
                 return new User("false");
+            }
+        }
+
+        public static bool SendEntry(int eventId, String attendType, String foodType, User user) 
+        {
+            String query = $"INSERT INTO Entries(user_id,event_id,attend_type,food_type,status) VALUES ({user.GetId()},{eventId}, '{attendType}', '{foodType}' ,'rozpatrywany');";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
             }
         }
     }

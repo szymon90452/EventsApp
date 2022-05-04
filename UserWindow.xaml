@@ -12,20 +12,32 @@
         <Rectangle HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="205" Fill="#FF88E8DD"/>
         <Rectangle HorizontalAlignment="Center" Height="359" VerticalAlignment="Top" Width="800" Fill="#FFDFE6E5" Margin="0,75,0,0"/>
         <Rectangle HorizontalAlignment="Center" Height="1" VerticalAlignment="Top" Width="800" Fill="Black" Margin="0,75,0,0"/>
+        <Rectangle HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="362" Fill="Black" Margin="229,256,0,0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.997"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
         <Label x:Name="nameLabel" Content="John Doe" HorizontalAlignment="Left" Margin="78,10,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <Label x:Name="nickLabel" Content="jdoe34" HorizontalAlignment="Left" Margin="78,38,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
         <Button x:Name="logoutButton" Content="Wyloguj" HorizontalAlignment="Left" Height="40" Margin="690,17,0,0" VerticalAlignment="Top" Width="83" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Bahnschrift SemiBold" Click="LogoutButton_Click"/>
         <Image x:Name="personImg" HorizontalAlignment="Left" Height="50" Margin="23,12,0,0" VerticalAlignment="Top" Width="50" Source="/blank-profile-picture-g1b6ced75b_640.png"/>
-        <ComboBox x:Name="comboEventTitle" HorizontalAlignment="Left" Margin="152,92,0,0" VerticalAlignment="Top" Width="248" Height="24" SelectionChanged="comboEventTitle_SelectionChanged"/>
-        <Label Content="Nazwa wydarzenia" HorizontalAlignment="Left" Margin="23,92,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
-        <Label Content="Termin wydarzenia" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold"/>
-        <Label x:Name="labelDateTime" Content="" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold" Width="118"/>
-        <ComboBox x:Name="comboAttendType" HorizontalAlignment="Left" Margin="152,242,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
-        <Label Content="Typ uczestnictwa" HorizontalAlignment="Left" Margin="23,242,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
-        <ComboBox x:Name="comboFoodType" HorizontalAlignment="Left" Margin="152,282,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
-        <Label Content="Wyżywienie" HorizontalAlignment="Left" Margin="23,282,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
-        <Button Content="Zapisz się" HorizontalAlignment="Left" Margin="80,350,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="Blue" FontSize="20" FontFamily="Bahnschrift SemiBold" Foreground="AliceBlue" BorderThickness="1,1,1,1"/>
-        <Label Content="Opis wydarzenia" HorizontalAlignment="Left" Margin="23,135,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
-        <Label x:Name="labelDescription" Content="" HorizontalAlignment="Left" Margin="152,135,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Height="65"/>
+        <ComboBox x:Name="comboEventTitle" HorizontalAlignment="Left" Margin="141,94,0,0" VerticalAlignment="Top" Width="248" Height="24" SelectionChanged="ComboEventTitle_SelectionChanged"/>
+        <Label Content="Nazwa wydarzenia" HorizontalAlignment="Left" Margin="12,94,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Label Content="Termin wydarzenia" HorizontalAlignment="Left" Margin="12,206,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Label x:Name="labelDateTime" Content="" HorizontalAlignment="Left" Margin="141,206,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Width="118"/>
+        <ComboBox x:Name="comboAttendType" HorizontalAlignment="Left" Margin="141,244,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
+        <Label Content="Typ uczestnictwa" HorizontalAlignment="Left" Margin="12,244,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <ComboBox x:Name="comboFoodType" HorizontalAlignment="Left" Margin="141,284,0,0" VerticalAlignment="Top" Width="248" Height="23"/>
+        <Label Content="Wyżywienie" HorizontalAlignment="Left" Margin="12,284,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Button Content="Zapisz się" HorizontalAlignment="Left" Margin="78,342,0,0" VerticalAlignment="Top" Height="50" Width="250" Background="#FFD0EAE7" FontSize="20" FontFamily="Bahnschrift SemiBold" Foreground="Black" BorderThickness="1,1,1,1" Click="Button_Click"/>
+        <Label Content="Opis wydarzenia" HorizontalAlignment="Left" Margin="12,137,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <TextBlock x:Name="labelDescription" HorizontalAlignment="Left" Margin="141,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Height="65"/>
+        <Label Content="Twoje zapisy:" HorizontalAlignment="Left" Margin="424,94,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Label Content="Aktualnie nie posiadasz zapisów na wydarzenia" HorizontalAlignment="Left" Margin="481,133,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
     </Grid>
 </Window>
