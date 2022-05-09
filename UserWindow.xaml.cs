@@ -31,6 +31,7 @@ namespace EventsApp
             InitializeCombos();
             InitializeUserInfo();
             InitializeComboEvent();
+            GetEventsEntryForUser();
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -133,6 +134,41 @@ namespace EventsApp
             comboAttendType.SelectedIndex = 0;
             comboEventTitle.SelectedIndex = 0;
             comboFoodType.SelectedIndex = 0;
+            GetEventsEntryForUser();
         }
+
+        void GetEventsEntryForUser()
+        {
+            DatabaseConnector.StartConnection();
+            String query = $"SELECT events.title,events.time_of_event,DATE_FORMAT(events.date_of_event, '%d-%m-%Y'),entries.status FROM entries INNER JOIN events ON events.id = entries.event_id WHERE user_id={Convert.ToString(user.GetId())};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int count = 0;
+
+                while (reader.Read())
+                {
+                    eventsEntryListView.Items.Add(new ListItem { Title = (string)reader[0], Time = reader[1] + " | " + reader[2], Status = (string)reader[3] });
+                    count++;
+                }
+                DatabaseConnector.CloseConnection();
+
+                if (count == 0)
+                {
+                    eventsEntryListView.Visibility = Visibility.Hidden;
+                }
+                else 
+                {
+                    eventsEntryListView.Visibility = Visibility.Visible;
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseConnector.CloseConnection();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
     }
 }
