@@ -146,6 +146,7 @@ namespace EventsApp
                 MySqlCommand cmd = new(query, DatabaseConnector.connection);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 int count = 0;
+                eventsEntryListView.Items.Clear();
 
                 while (reader.Read())
                 {
