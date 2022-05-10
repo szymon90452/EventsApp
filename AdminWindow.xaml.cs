@@ -27,6 +27,7 @@ namespace EventsApp
             InitializeComponent();
             this.user = user;
             GetUsersFromDb();
+            GetEventsFromDb();
         }
 
         void GetUsersFromDb()
@@ -44,7 +45,29 @@ namespace EventsApp
                     usersListView.Items.Add(new UserItem { Id = (int)reader[0], Login = (string)reader[1], Name= (string)reader[3], Surname=(string)reader[4], DateOfRegistry= (string)reader[5], Privileges = (string)reader[6]});
                 }
                 DatabaseConnector.CloseConnection();
+            }
+            catch (Exception e)
+            {
+                DatabaseConnector.CloseConnection();
+                MessageBox.Show(e.ToString());
+            }
+        }
 
+        void GetEventsFromDb()
+        {
+            DatabaseConnector.StartConnection();
+            String query = $"SELECT id,title,description,DATE_FORMAT(date_of_event, '%d-%m-%Y'),time_of_event FROM events;";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                eventsListView.Items.Clear();
+
+                while (reader.Read())
+                {
+                    eventsListView.Items.Add(new EventItem { Id = (int)reader[0], Title = (string)reader[1], Description = (string)reader[2], DateTimeOfEvent = (string)reader[3]+" | "+reader[4] });
+                }
+                DatabaseConnector.CloseConnection();
             }
             catch (Exception e)
             {

@@ -41,6 +41,30 @@
             </TabItem>
             <TabItem Header="Wydarzenia">
                 <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="eventsListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Nazwa wydarzenia" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}"/>
+                                <GridViewColumn Header="Data wydarzenia" DisplayMemberBinding="{Binding DateTimeOfEvent}"/>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Edytuj" Click="EditUser" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Usuń" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
             <TabItem Header="Zapisy">
