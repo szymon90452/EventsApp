@@ -26,6 +26,10 @@ namespace EventsApp
         {
             InitializeComponent();
             this.user = user;
+            GetDataFromDb();
+        }
+
+        void GetDataFromDb() {
             GetUsersFromDb();
             GetEventsFromDb();
             GetEntriesFromDb();
