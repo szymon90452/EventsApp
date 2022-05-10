@@ -1,0 +1,57 @@
+﻿<Window x:Class="EventsApp.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EventsApp"
+        mc:Ignorable="d"
+        Title="EventsApp - Admin" Height="450" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Użytkownicy">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="usersListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id użytkownika" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Nazwa użytkownika" DisplayMemberBinding="{Binding Login}"/>
+                                <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}"/>
+                                <GridViewColumn Header="Data rejestracji" DisplayMemberBinding="{Binding DateOfRegistry}"/>
+                                <GridViewColumn Header="Uprawnienia" DisplayMemberBinding="{Binding Privileges}"/>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Edytuj" Click="EditUser" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Usuń" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Wydarzenia">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zapisy">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Header="Opcje">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

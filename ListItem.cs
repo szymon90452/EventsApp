@@ -12,7 +12,5 @@ namespace EventsApp
         public string Time { get; set; }
         public string Status { get; set; }
 
-
-        
     }
 }

@@ -47,13 +47,21 @@ namespace EventsApp
                 if (DatabaseOperation.UserLogin(login, password))
                 {
                     User user = DatabaseOperation.GetInfoAboutUser(login, password);
-                    if (user.GetPriviledges() != "false") 
+                    if (user.GetPriviledges() == "user")
                     {
                         UserWindow userWindow = new(user);
                         userWindow.Show();
                         this.Close();
                         DatabaseConnector.CloseConnection();
                     }
+                    else if (user.GetPriviledges() == "administrator")
+                    {
+                        AdminWindow adminWindow = new(user);
+                        adminWindow.Show();
+                        this.Close();
+                        DatabaseConnector.CloseConnection();
+                    }
+                    
                 }
                 else
                 {
