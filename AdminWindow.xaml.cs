@@ -28,6 +28,7 @@ namespace EventsApp
             this.user = user;
             GetUsersFromDb();
             GetEventsFromDb();
+            GetEntriesFromDb();
         }
 
         void GetUsersFromDb()
@@ -76,6 +77,29 @@ namespace EventsApp
             }
         }
 
+        void GetEntriesFromDb()
+        {
+            DatabaseConnector.StartConnection();
+            String query = $"SELECT entries.id,users.name,users.surname,events.title,entries.attend_type,entries.food_type,entries.status FROM entries INNER JOIN USERS ON users.id = entries.user_id INNER JOIN events ON events.id = entries.event_id WHERE entries.status = 'rozpatrywany';";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                entriesListView.Items.Clear();
+
+                while (reader.Read())
+                {
+                    entriesListView.Items.Add(new EntryItem { Id = (int)reader[0], Name = (string)reader[1], Surname = (string)reader[2], Title = (string)reader[3], AttendType = (string)reader[4], FoodType = (string)reader[5], Status = (string)reader[6] });
+                }
+                DatabaseConnector.CloseConnection();
+            }
+            catch (Exception e)
+            {
+                DatabaseConnector.CloseConnection();
+                MessageBox.Show(e.ToString());
+            }
+        }
+
         private void EditUser(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
@@ -88,6 +112,44 @@ namespace EventsApp
             Button b = sender as Button;
             UserItem userItem = b.CommandParameter as UserItem;
             //Delete procedure + refresh list
+        }
+
+        private void AcceptUserEntry(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            EntryItem entryItem = b.CommandParameter as EntryItem;
+            DatabaseConnector.StartConnection();
+            String query = $"UPDATE Entries SET status='zaakceptowany' WHERE Entries.id={entryItem.Id};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            DatabaseConnector.CloseConnection();
+            GetEntriesFromDb();
+        }
+
+        private void RejectUserEntry(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            EntryItem entryItem = b.CommandParameter as EntryItem;
+            DatabaseConnector.StartConnection();
+            String query = $"UPDATE Entries SET status='odrzucony' WHERE Entries.id={entryItem.Id};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            DatabaseConnector.CloseConnection();
+            GetEntriesFromDb();
         }
 
     }

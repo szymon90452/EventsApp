@@ -69,6 +69,33 @@
             </TabItem>
             <TabItem Header="Zapisy">
                 <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="entriesListView">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}"/>
+                                <GridViewColumn Header="Nazwa wydarzenia" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Header="Typ uczestnictwa" DisplayMemberBinding="{Binding AttendType}"/>
+                                <GridViewColumn Header="Wyżywienie" DisplayMemberBinding="{Binding FoodType}"/>
+                                <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"/>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Potwierdź zapis" Click="AcceptUserEntry" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Odrzuć zapis" Click="RejectUserEntry" CommandParameter="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
             <TabItem Header="Opcje">
