@@ -30,7 +30,7 @@
                                 <GridViewColumn Header="">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Usuń" CommandParameter="{Binding}"/>
+                                            <Button Content="Usuń" Click="DeleteUser" CommandParameter="{Binding}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -58,7 +58,7 @@
                                 <GridViewColumn Header="">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Usuń" CommandParameter="{Binding}"/>
+                                            <Button Content="Usuń" Click="DeleteEvent" CommandParameter="{Binding}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

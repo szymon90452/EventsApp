@@ -34,7 +34,7 @@ namespace EventsApp
         void GetUsersFromDb()
         {
             DatabaseConnector.StartConnection();
-            String query = $"SELECT id,login,password,name,surname,DATE_FORMAT(date_of_registry, '%d-%m-%Y'),privileges FROM users GROUP BY privileges;";
+            String query = $"SELECT id,login,password,name,surname,DATE_FORMAT(date_of_registry, '%d-%m-%Y'),privileges FROM users;";
             try
             {
                 MySqlCommand cmd = new(query, DatabaseConnector.connection);
@@ -111,7 +111,46 @@ namespace EventsApp
         {
             Button b = sender as Button;
             UserItem userItem = b.CommandParameter as UserItem;
-            //Delete procedure + refresh list
+            DatabaseConnector.StartConnection();
+            String query = $"DELETE FROM Users WHERE id={userItem.Id};";
+            String query2 = $"DELETE FROM Entries WHERE user_id={userItem.Id};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                MySqlCommand cmd2 = new(query2, DatabaseConnector.connection);
+                cmd2.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            DatabaseConnector.CloseConnection();
+            GetUsersFromDb();
+            GetEntriesFromDb();
+        }
+
+        private void DeleteEvent(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            EventItem eventItem = b.CommandParameter as EventItem;
+            DatabaseConnector.StartConnection();
+            String query = $"DELETE FROM Events WHERE Events.id={eventItem.Id};";
+            String query2 = $"DELETE FROM Entries WHERE Entries.event_id={eventItem.Id};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                MySqlCommand cmd2 = new(query2, DatabaseConnector.connection);
+                cmd2.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            DatabaseConnector.CloseConnection();
+            GetEventsFromDb();
+            GetEntriesFromDb();
         }
 
         private void AcceptUserEntry(object sender, RoutedEventArgs e)
