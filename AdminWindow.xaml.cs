@@ -108,7 +108,8 @@ namespace EventsApp
         {
             Button b = sender as Button;
             UserItem userItem = b.CommandParameter as UserItem;
-            //Display other window with edit of current user
+            EditUserWindow editUserWindow = new EditUserWindow(userItem.Id);
+            editUserWindow.Show();
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
