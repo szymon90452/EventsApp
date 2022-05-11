@@ -9,7 +9,7 @@
         ResizeMode="NoResize">
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="407" Stroke="Black" VerticalAlignment="Center" Width="400" Fill="#FFB6D0D2"/>
-        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="285,331,0,0" VerticalAlignment="Top" Height="33" Width="76"/>
+        <Button Content="Modyfikuj użytkownika" HorizontalAlignment="Left" Margin="221,331,0,0" VerticalAlignment="Top" Height="33" Width="140" Click="Button_Click"/>
         <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="172,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="26" FontSize="16"/>
         <Label Content="Nazwa użytkownika" HorizontalAlignment="Left" Margin="23,30,0,0" VerticalAlignment="Top"/>
         <Label Content="Imię" HorizontalAlignment="Left" Margin="23,61,0,0" VerticalAlignment="Top"/>
@@ -21,10 +21,10 @@
         <Label Content="Uprawnienia" HorizontalAlignment="Left" Margin="23,154,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="privilegesComboBox" HorizontalAlignment="Left" Margin="172,154,0,0" VerticalAlignment="Top" Width="189" Height="26"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="23,185,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="172,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="26" FontSize="16" Visibility="Hidden"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="172,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="26" FontSize="16" Visibility="Hidden"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="172,185,0,0" VerticalAlignment="Top" Width="189" Height="26" />
         <Button Content="Resetuj Hasło" HorizontalAlignment="Left" Margin="285,216,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Pokaż hasło" HorizontalAlignment="Left" Margin="174,216,0,0" VerticalAlignment="Top" Height="19" Width="94" FontSize="14"/>
+        <CheckBox x:Name="checkBox" Content="Pokaż hasło" HorizontalAlignment="Left" Margin="174,216,0,0" VerticalAlignment="Top" Height="19" Width="94" FontSize="14" Checked="CheckBox_Checked" Unchecked="checkBox_Unchecked"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="23,254,0,0" VerticalAlignment="Top"/>
         <Label Content="Data rejestracji" HorizontalAlignment="Left" Margin="23,285,0,0" VerticalAlignment="Top"/>
         <Label x:Name="idLabel" Content="" HorizontalAlignment="Left" Margin="172,254,0,0" VerticalAlignment="Top" Width="70"/>

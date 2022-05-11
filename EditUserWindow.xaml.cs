@@ -21,6 +21,7 @@ namespace EventsApp
     public partial class EditUserWindow : Window
     {
         int userId;
+        bool passwordVisible;
         public EditUserWindow(int userId)
         {
             InitializeComponent();
@@ -74,6 +75,56 @@ namespace EventsApp
                 MessageBox.Show(ex.ToString());
             }
             DatabaseConnector.CloseConnection();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String login = loginTextBox.Text;
+            String name = nameTextBox.Text;
+            String surname = surnameTextBox.Text;
+            String email = emailTextBox.Text;
+            String password;
+            String privileges = (string)privilegesComboBox.SelectedItem.ToString();
+
+            if (passwordVisible)
+            {
+                password = passwordTextBox.Text;
+            }
+            else
+            {
+                password = passwordBox.Password;
+            }
+
+            DatabaseConnector.StartConnection();
+            String query = $"UPDATE Users SET login='{login}',name='{name}', surname='{surname}', email='{email}', password='{password}', privileges='{privileges}' WHERE id={userId};";
+            try
+            {
+                MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Użytkownik "+login+" został zmodyfikowany pomyślnie.");
+                this.Close();
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            DatabaseConnector.CloseConnection();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            passwordTextBox.Text = passwordBox.Password;
+            passwordTextBox.Visibility = Visibility.Visible;
+            passwordBox.Visibility = Visibility.Hidden;
+            passwordVisible = true;
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            passwordBox.Password = passwordTextBox.Text;
+            passwordTextBox.Visibility = Visibility.Hidden;
+            passwordBox.Visibility = Visibility.Visible;
+            passwordVisible = false;
         }
     }
 }
