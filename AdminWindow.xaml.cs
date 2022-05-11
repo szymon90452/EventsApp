@@ -134,7 +134,13 @@ namespace EventsApp
             GetUsersFromDb();
             GetEntriesFromDb();
         }
-
+        private void EditEvent(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            EventItem eventItem = b.CommandParameter as EventItem;
+            EditEventWindow editEventWindow = new EditEventWindow(eventItem.Id);
+            editEventWindow.Show();
+        }
         private void DeleteEvent(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;

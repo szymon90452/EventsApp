@@ -51,7 +51,7 @@
                                 <GridViewColumn Header="">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Edytuj" Click="EditUser" CommandParameter="{Binding}"/>
+                                            <Button Content="Edytuj" Click="EditEvent" CommandParameter="{Binding}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
