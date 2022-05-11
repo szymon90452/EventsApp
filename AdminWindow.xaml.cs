@@ -104,6 +104,17 @@ namespace EventsApp
             }
         }
 
+        private void RefreshTables(object sender, RoutedEventArgs e)
+        {
+            GetDataFromDb();
+        }
+
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            AddUserWindow addUserWindow = new AddUserWindow();
+            addUserWindow.Show();
+        }
+
         private void EditUser(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
@@ -202,5 +213,6 @@ namespace EventsApp
             GetEntriesFromDb();
         }
 
+        
     }
 }

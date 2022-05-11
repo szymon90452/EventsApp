@@ -10,11 +10,11 @@
     <Grid>
         <Menu Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
             <MenuItem Header="_Akcja">
-                <MenuItem Header="_Odśwież dane" />
+                <MenuItem Header="_Odśwież dane" Click="RefreshTables"/>
                 <MenuItem Header="_Wyloguj" />
             </MenuItem>
             <MenuItem Header="_Dodaj">
-                <MenuItem Header="_Nowy użytkownik" />
+                <MenuItem Header="_Nowy użytkownik" Click="AddUser"/>
                 <MenuItem Header="_Nowe wydarzenie" />
             </MenuItem>
         </Menu>
