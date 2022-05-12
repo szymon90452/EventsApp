@@ -38,17 +38,49 @@ namespace EventsApp
 
         public static bool UserRegister(string name, string surname,string login, string password, string email, string priviledges="user")
         {
-            String query = $"INSERT INTO users (name,surname,login,password,email,privileges,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}','{priviledges}',CURDATE());";
+            bool loginExists = false;
+            String checkquery = $"SELECT * FROM users where login='{login}';";
             try
             {
-                MySqlCommand cmd = new(query, DatabaseConnector.connection);
-                cmd.ExecuteNonQuery();
-                return true;
+                MySqlCommand cmd = new(checkquery, DatabaseConnector.connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    reader.Close();
+                    loginExists = true;
+                }
+                else
+                {
+                    reader.Close();
+                    loginExists = false;
+                }
             }
             catch (Exception)
             {
                 //MessageBox.Show(ex.ToString());
                 return false;
+            }
+
+            if (loginExists)
+            {
+                MessageBox.Show("Już istnieje użytkownik z taką nazwą!");
+                return false;
+            }
+            else 
+            {
+                String query = $"INSERT INTO users (name,surname,login,password,email,privileges,date_of_registry) VALUES ('{name}','{surname}','{login}','{password}','{email}','{priviledges}',CURDATE());";
+                try
+                {
+                    MySqlCommand cmd = new(query, DatabaseConnector.connection);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    //MessageBox.Show(ex.ToString());
+                    return false;
+                }
             }
         }
 

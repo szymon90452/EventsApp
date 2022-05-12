@@ -38,7 +38,7 @@ namespace EventsApp
         void GetUsersFromDb()
         {
             DatabaseConnector.StartConnection();
-            String query = $"SELECT id,login,password,name,surname,DATE_FORMAT(date_of_registry, '%d-%m-%Y'),privileges FROM users;";
+            String query = $"SELECT id,login,password,name,surname,DATE_FORMAT(date_of_registry, '%d-%m-%Y'),privileges FROM users WHERE id!={user.GetId()};";
             try
             {
                 MySqlCommand cmd = new(query, DatabaseConnector.connection);
@@ -113,6 +113,12 @@ namespace EventsApp
         {
             AddUserWindow addUserWindow = new AddUserWindow();
             addUserWindow.Show();
+        }
+
+        private void AddEvent(object sender, RoutedEventArgs e)
+        {
+            AddEventWindow addEventWindow = new AddEventWindow();
+            addEventWindow.Show();
         }
 
         private void EditUser(object sender, RoutedEventArgs e)

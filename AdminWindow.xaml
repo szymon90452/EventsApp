@@ -15,7 +15,7 @@
             </MenuItem>
             <MenuItem Header="_Dodaj">
                 <MenuItem Header="_Nowy użytkownik" Click="AddUser"/>
-                <MenuItem Header="_Nowe wydarzenie" />
+                <MenuItem Header="_Nowe wydarzenie" Click="AddEvent"/>
             </MenuItem>
         </Menu>
         <TabControl Margin="0,20,0,0">
