@@ -22,6 +22,7 @@ namespace EventsApp
     {
 
         bool passwordIsVisible = false;
+        int failedAttempt = 0;
 
         public LoginWindow()
         {
@@ -42,31 +43,39 @@ namespace EventsApp
                 password = passwordBox.Password.ToString();
             }
 
-            if (DatabaseConnector.StartConnection()) 
+            if (failedAttempt < 3)
             {
-                if (DatabaseOperation.UserLogin(login, password))
+                if (DatabaseConnector.StartConnection())
                 {
-                    User user = DatabaseOperation.GetInfoAboutUser(login, password);
-                    if (user.GetPriviledges() == "user")
+                    if (DatabaseOperation.UserLogin(login, password))
                     {
-                        UserWindow userWindow = new(user);
-                        userWindow.Show();
-                        this.Close();
-                        DatabaseConnector.CloseConnection();
+                        User user = DatabaseOperation.GetInfoAboutUser(login, password);
+                        if (user.GetPriviledges() == "user")
+                        {
+                            UserWindow userWindow = new(user);
+                            userWindow.Show();
+                            this.Close();
+                            DatabaseConnector.CloseConnection();
+                        }
+                        else if (user.GetPriviledges() == "administrator")
+                        {
+                            AdminWindow adminWindow = new(user);
+                            adminWindow.Show();
+                            this.Close();
+                            DatabaseConnector.CloseConnection();
+                        }
+
                     }
-                    else if (user.GetPriviledges() == "administrator")
+                    else
                     {
-                        AdminWindow adminWindow = new(user);
-                        adminWindow.Show();
-                        this.Close();
-                        DatabaseConnector.CloseConnection();
+                        MessageBox.Show("Nieprawidłowe dane logowania");
+                        failedAttempt++;
                     }
-                    
                 }
-                else
-                {
-                    MessageBox.Show("Nieprawidłowe dane logowania");
-                }
+            }
+            else 
+            {
+                MessageBox.Show("Przekroczono ilość nieudanych prób logowania");    
             }
         }
 
